@@ -2,5 +2,5 @@ Install command:
 
 ```
 #!/usr/bin/env bash
-bash <(curl -Ls https://github.com/FelixMarcus/mac-setup.git/install.sh)
+sh -c <(curl -Ls https://raw.githubusercontent.com/FelixMarcus/mac-setup/main/install.sh)
 ```
