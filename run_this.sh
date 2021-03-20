@@ -7,9 +7,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 #Symbolically link .zshrc to repo
-ln -s $PWD/.zshrc ~/.zshrc
-ln -s $PWD/.p10k.zsh ~/.p10k.zsh
-
+ln -s $PWD/.zshrc /Users/$USER/.zshrc
+ln -s $PWD/.p10k.zsh /Users/$USER/.p10k.zsh
 
 #Install xcode CLT
 xcode-select --install
