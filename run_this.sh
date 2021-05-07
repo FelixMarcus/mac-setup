@@ -29,7 +29,6 @@ ln -s $PWD/.p10k.zsh $USER_DIR/.p10k.zsh
 echo Install Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-
 echo Install xcode CLT
 xcode-select --install
 
@@ -44,10 +43,6 @@ defaults write com.apple.FontRegistry.user "Normal Font" "MesloLGS-NF-Regular 14
 
 echo Link Brew Java as JVM so that it is recognised by /usr/local/java_home
 ln -s /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
-
-echo Fix permissions for oh-my-zsh
-autoload -U compaudit
-compaudit | xargs chmod g-w, o-w
 
 echo Reload zsh using powerlevel config
 $PWD/configure_zsh
