@@ -112,6 +112,9 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  autoload -Uz compaudit
+  compaudit | xargs chmod g-w
+
   autoload -Uz compinit
   compinit
 fi

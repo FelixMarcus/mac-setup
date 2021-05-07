@@ -44,9 +44,5 @@ defaults write com.apple.FontRegistry.user "Normal Font" "MesloLGS-NF-Regular 14
 echo Link Brew Java as JVM so that it is recognised by /usr/local/java_home
 ln -s /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
-echo Fix permissions for oh-my-zsh
-autoload -Uz compaudit
-compaudit | xargs chmod g-w
-
 echo Reload zsh using powerlevel config
 $PWD/configure_zsh
