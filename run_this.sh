@@ -39,6 +39,9 @@ which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homeb
 echo Install Homebrew Taps And Casks
 brew bundle --verbose
 
+echo Set iterm fonts to MesloLGS
+defaults write com.apple.FontRegistry.user "Normal Font" "MesloLGS-NF-Regular 14"
+
 echo Link Brew Java as JVM so that it is recognised by /usr/local/java_home
 ln -s /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
