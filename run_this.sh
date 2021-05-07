@@ -33,11 +33,18 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 echo Install xcode CLT
 xcode-select --install
 
+echo Install Homebrew
+which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 echo Install Homebrew Taps And Casks
-brew bundle
+brew bundle --verbose
 
 echo Link Brew Java as JVM so that it is recognised by /usr/local/java_home
 ln -s /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+
+echo Fix permissions for oh-my-zsh
+autoload -U compaudit
+compaudit | xargs chmod g-w, o-w
 
 echo Reload zsh using powerlevel config
 $PWD/configure_zsh
