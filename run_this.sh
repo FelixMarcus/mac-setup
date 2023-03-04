@@ -51,3 +51,9 @@ ln -s /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachin
 
 echo Reload zsh using powerlevel config
 $PWD/configure_zsh
+
+echo Installing latest version of NPM via NVM
+nvm install --lts
+nvm install node
+nvm alias default node
+
