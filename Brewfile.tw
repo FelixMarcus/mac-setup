@@ -1,0 +1,6 @@
+cask "zoom"
+cask "microsoft-office"
+cask "microsoft-auto-update"
+cask "google-drive"
+cask "intellij-idea"
+

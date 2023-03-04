@@ -1,0 +1,6 @@
+cask "daisydisk"
+cask "google-drive"
+cask "notion"
+cask "steam"
+cask "dropbox"
+cask "whatsapp"

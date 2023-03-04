@@ -41,7 +41,7 @@ echo Install Homebrew
 which brew || /bin/bash -c "$(sudo curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" </dev/null
 
 echo Install Homebrew Taps And Casks
-brew bundle --verbose
+brew bundle --verbose --file=Brewfile.base
 
 echo Set iterm fonts to MesloLGS
 defaults write com.apple.FontRegistry.user "Normal Font" "MesloLGS-NF-Regular 14"
