@@ -29,11 +29,16 @@ ln -s $PWD/.p10k.zsh $USER_DIR/.p10k.zsh
 echo Install Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-echo Install xcode CLT
-xcode-select --install
+# should be installed by homebrew automagically without TTY
+# echo Install xcode CLT
+# xcode-select --install
+
+# Removes existing installation of xcode cli tools to allow homebrew to reinstall fresh
+echo Remove Any Current Xcode CLI Tools Installation
+sudo rm -rf /Library/Developer/CommandLineTools
 
 echo Install Homebrew
-which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+which brew || /bin/bash -c "$(sudo curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" </dev/null
 
 echo Install Homebrew Taps And Casks
 brew bundle --verbose
