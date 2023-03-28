@@ -151,6 +151,9 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
+# Inits rbenv
+ieval "$(rbenv init - zsh)"
+
 # Adds code path to dev folder
 export PATH_TO_CODE=/Users/$USER/Dev/
 
