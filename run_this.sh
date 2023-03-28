@@ -57,3 +57,7 @@ nvm install --lts
 nvm install node
 nvm alias default node
 
+echo Installing talisman
+curl https://thoughtworks.github.io/talisman/install.sh > ~/install-talisman.sh
+chmod +x ~/install-talisman.sh
+
