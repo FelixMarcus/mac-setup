@@ -152,7 +152,10 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 # Inits rbenv
-ieval "$(rbenv init - zsh)"
+eval "$(rbenv init - zsh)"
+
+# Links Ruby OpenSSL to Homebrew OpenSSL (to keep it updated)
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # Adds code path to dev folder
 export PATH_TO_CODE=/Users/$USER/Dev/
