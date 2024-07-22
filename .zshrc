@@ -1,3 +1,6 @@
+# Add Homebrew to path
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -12,10 +15,19 @@ fi
 export ZSH=/Users/$USER/.oh-my-zsh
 export JAVA_HOME=`/usr/libexec/java_home -v 11`
 
+jdk() {
+        version=$1
+        export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+        java -version
+}
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME=""powerlevel10k/powerlevel10k""
+
+source ~/.oh-my-zsh/custom/themes/powerlevel10k/config/p10k-robbyrussell.zsh
+source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -119,16 +131,17 @@ if type brew &>/dev/null; then
   compinit
 fi
 
-# source /usr/local/opt/fzf/install
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 RPROMPT="%{$fg_bold[yellow]%}[%D %*]%{$reset_color%}"
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 export PATH="/usr/local/sbin:$PATH"
-PATH=/usr/local/sbin:/Users/$USER/.rbenv/shims:/usr/local/opt/rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/puppetlabs/bin:/usr/local/share/dotnet:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Wireshark.app/Contents/MacOS
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/sbin:/Users/$USER/.rbenv/shims:/usr/local/opt/rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/puppetlabs/bin:/usr/local/share/dotnet:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Wireshark.app/Contents/MacOS:$PATH
+
+ export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 # place this after nvm initialization!
 autoload -U add-zsh-hook
@@ -157,7 +170,31 @@ eval "$(rbenv init - zsh)"
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # Adds code path to dev folder
-export PATH_TO_CODE=/Users/$USER/Dev/
+export PATH_TO_CODE=/Users/$USER/repos/
+
+# Set GPG TTY
+export GPG_TTY=$(tty)
+
+export GRADLE_HOME="/usr/local/Cellar/gradle/4.6"
+export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+source <(kubectl completion zsh)
+
+export SDKMAN_DIR=$HOME/.sdkman
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Initialise pyenv
+eval "$(pyenv init -)"
+
+# Add ves to the path
+export PATH="$PATH:$HOME/repos/ves/development/scripts/bin"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Configure pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# Add pip installs to path
+export PATH=/Users/$USER/Library/Python/3.11/bin:$PATH
