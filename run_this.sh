@@ -38,7 +38,7 @@ echo Remove Any Current Xcode CLI Tools Installation
 sudo rm -rf /Library/Developer/CommandLineTools
 
 echo Install Homebrew
-which brew || /bin/bash -c "$(sudo curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" </dev/null
+/bin/bash -c "$(sudo curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" </dev/null
 
 echo Install Homebrew Taps And Casks
 brew bundle --verbose --file=Brewfile.base
