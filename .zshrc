@@ -13,13 +13,10 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$USER/.oh-my-zsh
-export JAVA_HOME=`/usr/libexec/java_home -v 11`
 
-jdk() {
-        version=$1
-        export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
-        java -version
-}
+# Setup JDK
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export JAVA_HOME="$(which java)"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -135,11 +132,10 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 RPROMPT="%{$fg_bold[yellow]%}[%D %*]%{$reset_color%}"
-export GROOVY_HOME=/usr/local/opt/groovy/libexec
 export PATH="/usr/local/sbin:$PATH"
 export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/sbin:/Users/$USER/.rbenv/shims:/usr/local/opt/rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/puppetlabs/bin:/usr/local/share/dotnet:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Wireshark.app/Contents/MacOS:$PATH
 
- export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
@@ -174,10 +170,6 @@ export PATH_TO_CODE=/Users/$USER/repos/
 
 # Set GPG TTY
 export GPG_TTY=$(tty)
-
-export GRADLE_HOME="/usr/local/Cellar/gradle/4.6"
-export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
-source <(kubectl completion zsh)
 
 export SDKMAN_DIR=$HOME/.sdkman
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
